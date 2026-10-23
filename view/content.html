@@ -1,0 +1,57 @@
+<section class="view-section" id="view-content">
+    <div class="page-heading">
+        <div>
+            <h1>Website content</h1>
+            <p class="page-subtitle">Manage the plans, prices, and services presented by Synth Ocean.</p>
+        </div>
+        <span class="draft-indicator" id="draftIndicator">
+            <i></i> 
+            No pending changes
+        </span>
+    </div>
+    
+    <div class="notice-banner">
+        <span class="notice-icon">i</span>
+        <div>
+            <strong>Draft editing mode</strong>
+            <p>Changes are saved locally as drafts in this prototype. They are not published to the public website.</p>
+        </div>
+    </div>
+
+    <div class="content-tabs" role="tablist">
+        <button class="content-tab active" data-content-tab="planes" role="tab">Plans & Pricing</button>
+        <button class="content-tab" data-content-tab="servicios" role="tab">Services</button>
+    </div>
+
+    <div class="editor-layout">
+        <div class="panel editor-panel">
+            <div class="panel-heading">
+                <div>
+                    <h2 id="editorTitle">Plans & Pricing</h2>
+                    <p id="editorDescription">Edit each plan’s price and features.</p>
+                </div>
+                <button class="button button-secondary" id="resetContent">Restore sample data</button>
+            </div>
+            <div id="plansEditor"></div>
+            <div id="servicesEditor" hidden></div>
+            <div class="editor-actions">
+                <span id="saveFeedback" aria-live="polite">Changes have not been saved yet.</span>
+                <button class="button button-primary" id="saveDraft">Save draft</button>
+            </div>
+        </div>
+        <aside class="panel preview-panel">
+            <div class="panel-heading">
+                <div>
+                    <h2>Preview</h2>
+                    <p>Preview of how the content will look</p>
+                </div>
+                <span class="preview-badge">DRAFT</span>
+            </div>
+            <div id="contentPreview" class="content-preview"></div>
+            <button class="button button-primary button-full" id="publishDraft">Review and confirm publishing</button>
+            <p class="preview-note">Publishing requires an API or a CMS connected to the public website.</p>
+        </aside>
+    </div>
+</section>
+
+

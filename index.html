@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#006dff">
+  <meta name="description" content="Synth Ocean Control Center">
+  <title>Control Center · Synth Ocean</title>
+  <link rel="icon" type="image/ico" href="image/brand/favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/script.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <div class="mobile-scrim" id="mobileScrim" hidden></div>
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="brand">
+        <a class="brand-mark" href="#dashboard" aria-label="Synth Ocean home">
+          <img class="brand-logo" src="image/brand/logo-blue.svg" alt="Synth Ocean">
+          <img class="brand-favicon" src="image/brand/favicon.ico" alt="">
+        </a>
+        <span class="brand-caption">CONTROL CENTER</span>
+        <button class="sidebar-collapse" id="sidebarCollapse" type="button" aria-label="Collapse sidebar" title="Collapse sidebar">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m14.5 5-7 7 7 7"/>
+          </svg>
+        </button>
+      </div>
+      <nav class="nav-list">
+        <button class="nav-item active" data-view="dashboard" title="Dashboard">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+              <rect x="14" y="3" width="7" height="4" rx="1.5"/>
+              <rect x="14" y="10" width="7" height="11" rx="1.5"/>
+              <rect x="3" y="13" width="7" height="8" rx="1.5"/>
+            </svg>
+          </span>
+          <span class="nav-text">Dashboard</span>
+        </button>
+        <button class="nav-item" data-view="analytics" title="Web Analytics">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 3v18h18"/>
+              <path d="m7 14 4-4 3 3 6-7"/>
+            </svg>
+          </span>
+          <span class="nav-text">Web Analytics</span>
+        </button>
+        <button class="nav-item" data-view="contacts" title="Contacts">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="5" width="18" height="14" rx="2"/>
+              <path d="m3 7 9 6 9-6"/>
+            </svg>
+          </span>
+          <span class="nav-text">Contacts <span class="nav-count" id="newContactsCount">3</span></span>
+        </button>
+      </nav>
+      <nav class="nav-list">
+        <button class="nav-item" data-view="content" title="Website content">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 4h16v16H4z"/>
+              <path d="M8 8h8M8 12h8M8 16h5"/>
+            </svg>
+          </span>
+          <span class="nav-text">Website content</span>
+        </button>
+        <button class="nav-item" data-view="company" title="Company information">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 21h18M5 21V5l7-3 7 3v16"/>
+              <path d="M9 9h1M14 9h1M9 13h1M14 13h1M10 21v-4h4v4"/>
+            </svg>
+          </span>
+          <span class="nav-text">Company information</span>
+        </button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="nav-item" data-view="configuration" title="Settings">
+          <span class="nav-icon settings-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="14" cy="14" r="2"/>
+              <path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.6a8 8 0 0 1-1.8 1l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.8-1l-1.7.6-1.4-2.4 1.4-1.1a7 7 0 0 1 0-2l-1.4-1.1 1.4-2.4 1.7.6a8 8 0 0 1 1.8-1l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.8 1l1.7-.6 1.4 2.4-1.4 1.1a7 7 0 0 1 0 2Z"/>
+            </svg>
+          </span>
+          <span class="nav-text">Settings</span>
+        </button>
+        <div class="sidebar-user">
+          <div class="avatar">SO</div>
+          <div class="user-details">
+            <strong>Administrator</strong>
+            <span>Private access</span>
+          </div>
+          <span class="online-dot" aria-label="Local session"></span>
+        </div>
+      </div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button mobile-menu" id="mobileMenu" type="button" aria-label="Open menu">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+          <div class="breadcrumb">
+            <span>Synth Ocean</span>
+            <span class="crumb-slash">/</span>
+            <strong id="breadcrumbCurrent">Dashboard</strong>
+          </div>
+        </div>
+      </header>
+      <div class="content-wrap">
+        <section class="view-section active" id="view-dashboard">
+          <div class="page-heading">
+            <div>
+              <h1>Overview</h1>
+              <p class="page-subtitle">A quick overview of your website performance and business activity.</p>
+            </div>
+            <div class="heading-actions">
+              <label class="select-wrap">
+                <span class="sr-only">Period</span>
+                <select id="overviewPeriod">
+                  <option value="7">Last 7 days</option>
+                  <option value="30" selected>Last 30 days</option>
+                  <option value="90">Last 90 days</option>
+                </select>
+              </label>
+              <button class="button button-primary" data-go="content">
+                <span>+</span>
+                Manage content
+              </button>
+            </div>
+          </div>
+          <div class="notice-banner">
+            <span class="notice-icon">i</span>
+            <div>
+              <strong>You are viewing sample data</strong>
+              <p>These figures are illustrative. Connect an analytics tool to display real visits.</p>
+            </div>
+            <button class="notice-close" id="dismissNotice" aria-label="Dismiss notice">x</button>
+          </div>
+          <div class="metric-grid">
+            <article class="metric-card">
+              <div class="metric-top">
+                <span>Visits</span>
+                <span class="metric-icon blue-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="metric-value">12.846</div>
+              <div class="metric-foot">
+                <span class="trend positive">12,8%</span>
+                <span>vs. previous period</span>
+              </div>
+              <div class="sparkline spark-blue">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-top">
+                <span>Estimated visitors</span>
+                <span class="metric-icon violet-icon">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="9" cy="8" r="3"/>
+                    <path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5.5a3 3 0 0 1 0 5.8M18 14a4 4 0 0 1 3 4v2"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="metric-value">8.392</div>
+              <div class="metric-foot">
+                <span class="trend positive">8,2%</span>
+                <span>vs. previous period</span>
+              </div>
+              <div class="sparkline spark-violet">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-top">
+                <span>Contacts received</span>
+                <span class="metric-icon green-icon">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="3" y="5" width="18" height="14" rx="2"/>
+                    <path d="m3 7 9 6 9-6"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="metric-value">148</div>
+              <div class="metric-foot">
+                <span class="trend positive">4,6%</span>
+                <span>vs. previous period</span>
+              </div>
+              <div class="sparkline spark-green">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-top">
+                <span>Estimated conversion</span>
+                <span class="metric-icon orange-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4 17 10 11l4 4 6-8"/>
+                    <path d="M14 7h6v6"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="metric-value">3,42<span class="metric-unit">%</span></div>
+              <div class="metric-foot">
+                <span class="trend negative">0,4%</span>
+                <span>vs. previous period</span>
+              </div>
+              <div class="sparkline spark-orange">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+            </article>
+          </div>
+          <div class="dashboard-grid">
+            <article class="panel traffic-panel">
+              <div class="panel-heading">
+                <div>
+                  <h2>Website traffic</h2>
+                  <p>Visits during the selected period</p>
+                </div>
+                <button class="text-button" data-go="analytics">View analytics</button>
+              </div>
+              <div class="chart-legend">
+                <span><i class="legend-dot blue-dot"></i>Visits</span>
+                <span><i class="legend-dot pale-dot"></i>Previous period</span>
+              </div>
+              <div class="chart-summary">
+                <strong id="chartTotal">12.846</strong>
+                <span class="trend positive">12,8%</span>
+              </div>
+              <div class="chart-container">
+                <div class="chart-y-labels">
+                  <span>4k</span>
+                  <span>3k</span>
+                  <span>2k</span>
+                  <span>1k</span>
+                  <span>0</span>
+                </div>
+                <div class="chart-main">
+                  <div class="chart-gridlines">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                  </div>
+                  <svg class="traffic-chart" viewBox="0 0 700 220" preserveAspectRatio="none" role="img" aria-label="Illustrative visits chart">
+                    <defs>
+                      <linearGradient id="areaFill" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0%" stop-color="#006dff" stop-opacity=".18"/>
+                        <stop offset="100%" stop-color="#006dff" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                    <path class="chart-area" d="M0 172 C25 165 28 140 55 150 S95 167 115 132 S152 145 175 112 S212 128 235 96 S270 119 295 102 S330 76 355 91 S395 110 415 75 S452 93 475 58 S510 88 535 64 S570 43 590 65 S630 31 650 45 S680 20 700 28 L700 220 L0 220Z"/>
+                    <path class="chart-line" d="M0 172 C25 165 28 140 55 150 S95 167 115 132 S152 145 175 112 S212 128 235 96 S270 119 295 102 S330 76 355 91 S395 110 415 75 S452 93 475 58 S510 88 535 64 S570 43 590 65 S630 31 650 45 S680 20 700 28"/>
+                  </svg>
+                  <div class="chart-x-labels">
+                    <span>01</span>
+                    <span>05</span>
+                    <span>10</span>
+                    <span>15</span>
+                    <span>20</span>
+                    <span>25</span>
+                    <span>30</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="panel sources-panel">
+              <div class="panel-heading">
+                <div>
+                  <h2>Traffic sources</h2>
+                  <p>Where your visitors come from</p>
+                </div>
+                <button class="more-button" aria-label="More options">
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <circle cx="5" cy="12" r="1.5"></circle>
+                    <circle cx="12" cy="12" r="1.5"></circle>
+                    <circle cx="19" cy="12" r="1.5"></circle>
+                  </svg>
+                </button>
+              </div>
+              <div class="donut-wrap">
+                <div class="donut-chart">
+                  <div class="donut-center">
+                    <strong>12.846</strong>
+                    <span>visits</span>
+                  </div>
+                </div>
+              </div>
+              <div class="source-list">
+                <div class="source-row">
+                  <span class="source-name"><i class="source-color source-one"></i>Search engines</span>
+                  <strong>42%</strong>
+                  <div class="source-track"><i style="width:42%"></i></div>
+                </div>
+                <div class="source-row">
+                  <span class="source-name"><i class="source-color source-two"></i>Direct</span>
+                  <strong>28%</strong>
+                  <div class="source-track"><i style="width:28%"></i></div>
+                </div>
+                <div class="source-row">
+                  <span class="source-name"><i class="source-color source-three"></i>Social media</span>
+                  <strong>19%</strong>
+                  <div class="source-track"><i style="width:19%"></i></div>
+                </div>
+                <div class="source-row">
+                  <span class="source-name"><i class="source-color source-four"></i>Referrals</span>
+                  <strong>11%</strong>
+                  <div class="source-track"><i style="width:11%"></i></div>
+                </div>
+              </div>
+            </article>
+            <article class="panel pages-panel">
+              <div class="panel-heading">
+                <div>
+                  <h2>Top pages</h2>
+                  <p>Content attracting the most interest</p>
+                </div>
+                <button class="text-button" data-go="analytics">View all</button>
+              </div>
+              <div class="table-scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Page</th>
+                      <th>Visits</th>
+                      <th>Change</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <span class="page-symbol">⌂</span>
+                        <span class="page-title">Home</span>
+                        <small>/</small>
+                      </td>
+                      <td>5.284</td>
+                      <td><span class="trend positive">+14,2%</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="page-symbol">◇</span>
+                        <span class="page-title">Plans & Pricing</span>
+                        <small>/#pricing</small>
+                      </td>
+                      <td>3.126</td>
+                      <td><span class="trend positive">+8,7%</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="page-symbol">✳</span>
+                        <span class="page-title">Services</span>
+                        <small>/#services</small>
+                      </td>
+                      <td>2.410</td>
+                      <td><span class="trend positive">+5,1%</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="page-symbol">◎</span>
+                        <span class="page-title">Synth Analytics</span>
+                        <small>/#analytics</small>
+                      </td>
+                      <td>1.240</td>
+                      <td><span class="trend negative">−2,3%</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+            <article class="panel recent-panel">
+              <div class="panel-heading">
+                <div>
+                  <h2>Recent contacts</h2>
+                  <p>Most recent business activity</p>
+                </div>
+                <button class="text-button" data-go="contacts">View inbox</button>
+              </div>
+              <div class="recent-list">
+                <div class="recent-item">
+                  <div class="contact-avatar avatar-blue">JD</div>
+                  <div class="recent-info">
+                    <strong>Jordan Davis</strong>
+                    <span>Question about the Tide plan</span>
+                  </div>
+                  <span class="status-tag status-new">New</span>
+                  <time>09:42</time>
+                </div>
+                <div class="recent-item">
+                  <div class="contact-avatar avatar-violet">AM</div>
+                  <div class="recent-info">
+                    <strong>Alex Morgan</strong>
+                    <span>Website quote</span>
+                  </div>
+                  <span class="status-tag status-review">In review</span>
+                  <time>Yesterday</time>
+                </div>
+                <div class="recent-item">
+                  <div class="contact-avatar avatar-orange">SR</div>
+                  <div class="recent-info">
+                    <strong>Sam Rivera</strong>
+                    <span>Maintenance question</span>
+                  </div>
+                  <span class="status-tag status-new">New</span>
+                  <time>Yesterday</time>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+        <footer class="app-footer">
+          <span>© Synth Ocean <span id="currentYear"></span></span>
+          <span>Control Center <i></i> Frontend prototype</span>
+        </footer>
+      </div>
+    </main>
+  </div>
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+  <dialog class="confirm-dialog" id="confirmDialog">
+    <form method="dialog">
+      <div class="dialog-icon">!</div>
+      <h2 id="dialogTitle">Confirm action</h2>
+      <p id="dialogMessage">Do you want to continue?</p>
+      <div class="dialog-actions">
+        <button class="button button-secondary" value="cancel">Cancel</button>
+        <button class="button button-primary" id="dialogConfirm" value="confirm">Confirm</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>

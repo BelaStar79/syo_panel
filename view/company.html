@@ -1,0 +1,42 @@
+<section class="view-section" id="view-company">
+    <div class="page-heading">
+        <div>
+            <h1>Company information</h1>
+            <p class="page-subtitle">Keep Synth Ocean contact information in one place.</p>
+        </div>
+    </div>
+    
+    <div class="notice-banner">
+        <span class="notice-icon">i</span>
+
+        <div>
+            <strong>Changes are local drafts</strong>
+            <p>This prototype does not automatically update the public website. Review and confirm changes before publishing through a future integration.</p>
+        </div>
+    </div>
+    
+    <form class="panel form-panel" id="companyForm">
+        <div class="panel-heading">
+            <div><h2>Contact details</h2><p>Information visitors can access.</p></div>
+        </div>
+        <div class="form-grid" id="companyFields"></div>
+        <div class="editor-actions">
+            <span id="companyFeedback" aria-live="polite">Details have not been saved yet.</span>
+            <button class="button button-primary" type="submit">Save draft</button>
+        </div>
+    </form>
+        <article class="panel standalone-panel">
+            <div class="panel-heading">
+                <div>
+                    <h2>Publish details</h2>
+                    <p>Review before applying changes to the public website.</p>
+                </div>
+            </div>
+            <p class="body-copy">Saved details remain as a draft in this browser. In production, publishing will require a secure connection to the site CMS or backend.</p>
+            <button class="button button-secondary" id="publishCompany">
+                Review and confirm publishing
+            </button>
+        </article>
+    </section>
+
+

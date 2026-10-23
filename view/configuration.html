@@ -1,0 +1,60 @@
+<section class="view-section" id="view-configuration">
+    <div class="page-heading">
+        <div>
+            <h1>Settings</h1>
+            <p class="page-subtitle">Interface preferences and integration status.</p>
+        </div>
+    </div>
+
+    <div class="settings-grid">
+        <article class="panel setting-card">
+            <div class="setting-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42"></path>
+                    <path d="M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+                </svg>
+            </div>
+            <div>
+                <h2>Appearance</h2>
+                <p>Switch the dashboard between light and dark themes.</p>
+            </div>
+            <button class="button button-secondary" id="settingsTheme">Toggle theme</button>
+        </article>
+
+        <article class="panel setting-card">
+            <div class="setting-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                    <path d="M10 21h4"></path>
+                </svg>
+            </div>
+            <div>
+                <h2>Application alerts</h2>
+                <p>Enable or disable application alerts and important notifications.</p>
+            </div>
+            <label class="inline-check">
+                <input type="checkbox" id="settingAlertsEnabled" checked>
+                Enable alerts
+            </label>
+        </article>
+
+        <article class="panel setting-card">
+            <div class="setting-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M12 8v4l3 2"></path>
+                    <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+            </div>
+            <div>
+                <h2>Confirmation messages</h2>
+                <p>Show or hide messages confirming saved changes and completed actions.</p>
+            </div>
+            <label class="inline-check">
+                <input type="checkbox" id="settingConfirmationsEnabled" checked>
+                Show confirmations
+            </label>
+        </article>
+
+    </div>
+</section>

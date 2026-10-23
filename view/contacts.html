@@ -1,0 +1,82 @@
+<section class="view-section" id="view-contacts">
+    <div class="page-heading">
+        <div>
+            <h1>Contacts</h1>
+            <p class="page-subtitle">Organize inquiries received through the website.</p>
+        </div>
+        <button class="button button-secondary" id="exportContacts">Export CSV</button>
+    </div>
+
+    <div class="notice-banner">
+        <span class="notice-icon">i</span>
+        <div>
+            <strong>Sample inbox</strong>
+            <p>These contacts are fictional. Connect the form to a server to receive and store real messages.</p>
+        </div>
+    </div>
+
+    <div class="panel standalone-panel">
+        <div class="toolbar">
+            <div class="search-box">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="7"/>
+                    <path d="m16 16 5 5"/>
+                </svg>
+                <input 
+                    id="contactSearch" 
+                    type="search" 
+                    placeholder="Search by name, email, or inquiry…" 
+                    aria-label="Search contacts"
+                />
+            </div>
+
+            <div class="contact-pagination-controls">
+                <label for="contactPageSize">Rows:</label>
+                <select id="contactPageSize" aria-label="Rows per page">
+                    <option value="5" selected>5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                </select>
+
+                <div class="contact-page-nav">
+                    <button type="button" id="contactPrevPage" disabled>
+                        Previous
+                    </button>
+                    <span id="contactPageInfo" aria-live="polite">
+                        Page 1 of 1
+                    </span>
+                    <button type="button" id="contactNextPage" disabled>
+                        Next
+                    </button>
+                </div>
+            </div>
+
+            <select id="contactStatus" aria-label="Filter by status">
+                <option value="all">All statuses</option>
+                <option value="New">New</option>
+                <option value="In review">In review</option>
+                <option value="Resolved">Resolved</option>
+            </select>
+        </div>
+        <div class="table-scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Contact</th>
+                        <th>Inquiry</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="contactsTable"></tbody>
+            </table>
+        </div>
+        <div class="table-footer">
+            <span id="contactCount">0 contacts</span>
+            <span>Status changes are saved in this browser.</span>
+        </div>
+    </div>
+</section>
+
+

@@ -1,0 +1,151 @@
+<section class="view-section" id="view-analytics">
+    <div class="page-heading">
+        <div>
+            <h1>Web Analytics</h1>
+            <p class="page-subtitle">Explore your website traffic and important actions.</p>
+        </div>
+        <label class="select-wrap">
+            <span class="sr-only">Period</span>
+            <select id="analyticsPeriod">
+                <option value="7">Last 7 days</option>
+                <option value="30" selected>Last 30 days</option>
+                <option value="90">Last 90 days</option>
+            </select>
+        </label>
+    </div>
+
+    <div class="notice-banner">
+        <span class="notice-icon">i</span>
+        <div><strong>Demo data</strong>
+            <p>Reports will update when you connect a real analytics source.</p>
+        </div>
+    </div>
+    
+    <div class="metric-grid metric-grid-three">
+        <article class="metric-card">
+            <div class="metric-top">
+                <span>Visits</span>
+            </div>
+            <div class="metric-value">12.846</div>
+            <div class="metric-foot">
+                <span class="trend positive">12,8%</span>
+                <span>vs. previous period</span>
+            </div>
+        </article>
+        <article class="metric-card">
+            <div class="metric-top">
+                <span>Estimated average duration</span>
+            </div>
+            <div class="metric-value">02:48</div>
+            <div class="metric-foot">
+                <span class="trend positive">6,1%</span>
+                <span>vs. previous period</span>
+            </div>
+        </article>
+        <article class="metric-card">
+            <div class="metric-top">
+                <span>Contact actions</span>
+            </div>
+            <div class="metric-value">221</div>
+            <div class="metric-foot">
+                <span class="trend positive">9,3%</span>
+                <span>Estimated clicks and form submissions</span>
+            </div>
+        </article>
+    </div>
+    
+    <div class="dashboard-grid analytics-detail-grid">
+        <article class="panel traffic-panel">
+            <div class="panel-heading">
+                <div>
+                    <h2>Traffic over time</h2>
+                    <p>Illustrative data for the selected period</p>
+                </div>
+            </div>
+            <div class="large-chart">
+                <svg 
+                    viewBox="0 0 800 260" 
+                    preserveAspectRatio="none" 
+                    role="img" 
+                    aria-label="Illustrative traffic chart"
+                >
+                    <defs>
+                        <linearGradient id="bigFill" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#006dff" stop-opacity=".2"/>
+                            <stop offset="100%" stop-color="#006dff" stop-opacity="0"/>
+                        </linearGradient>
+                    </defs>
+                    <path 
+                        d="M0 205 C60 180 70 210 120 160 S180 195 230 130 S300 150 350 110 S420 145 470 82 S540 120 590 70 S660 85 710 45 S770 55 800 25 L800 260 L0 260Z" 
+                        fill="url(#bigFill)"
+                    />
+                    <path 
+                        d="M0 205 C60 180 70 210 120 160 S180 195 230 130 S300 150 350 110 S420 145 470 82 S540 120 590 70 S660 85 710 45 S770 55 800 25" 
+                        fill="none" 
+                        stroke="#006dff" 
+                        stroke-width="3" 
+                        vector-effect="non-scaling-stroke"
+                    />
+                </svg>
+                <div class="chart-x-labels">
+                    <span>Home</span>
+                    <span>Week 1</span>
+                    <span>Week 2</span>
+                    <span>Week 3</span>
+                    <span>End of period</span>
+                </div>
+            </div>
+        </article>
+        <article class="panel">
+            <div class="panel-heading">
+                <div>
+                    <h2>Conversions</h2>
+                    <p>Sample contact actions</p>
+                </div>
+            </div>
+            <div class="conversion-list">
+                <div>
+                    <span>Form submitted</span>
+                    <strong>148</strong>
+                    <i style="width:72%"></i>
+                </div>
+                <div>
+                    <span>Email click</span>
+                    <strong>43</strong>
+                    <i style="width:35%"></i>
+                </div>
+                <div>
+                    <span>Phone click</span>
+                    <strong>30</strong>
+                    <i style="width:24%"></i>
+                </div>
+            </div>
+        </article>
+    </div>
+    
+    <article class="panel standalone-panel">
+        <div class="panel-heading">
+            <div>
+                <h2>Performance by page</h2>
+                <p>Illustrative comparison</p>
+            </div>
+            <button class="button button-secondary" id="exportAnalytics">Export CSV</button>
+        </div>
+        <div class="table-scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Page</th>
+                        <th>Visits</th>
+                        <th>Visitors</th>
+                        <th>Average time</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </article>
+</section>
+
+
